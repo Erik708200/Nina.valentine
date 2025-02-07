@@ -15,13 +15,17 @@
             flex-direction: column;
             text-align: center;
             color: white;
+            overflow: hidden;
+            position: relative;
         }
         h1 {
             font-size: 3em;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
         }
         .buttons {
             margin-top: 20px;
+            z-index: 2;
         }
         button {
             font-size: 20px;
@@ -47,6 +51,15 @@
         .no:hover {
             background-color: #b3b3b3;
         }
+        .floating-text {
+            position: absolute;
+            font-size: 2em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            user-select: none;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -56,15 +69,44 @@
         <button class="no" onclick="noResponse()">No.</button>
     </div>
 
+    <div id="floating-text" class="floating-text">ERIK LOVES NINA</div>
+
     <script>
         function yesResponse() {
             document.body.innerHTML = "<h1 style='color:#fff; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);'>Nina, sweetie :)! Thanks for accepting my invitation for you to be my VALENTINE<3!</h1>";
         }
+
         function noResponse() {
             alert("Wrong answer, reload.");
             location.reload();
         }
+
+        // Floating text animation
+        const floatingText = document.getElementById("floating-text");
+        let xSpeed = 2;
+        let ySpeed = 2;
+        let xPos = Math.random() * window.innerWidth / 2;
+        let yPos = Math.random() * window.innerHeight / 2;
+
+        function moveText() {
+            xPos += xSpeed;
+            yPos += ySpeed;
+
+            if (xPos + floatingText.clientWidth >= window.innerWidth || xPos <= 0) {
+                xSpeed *= -1;
+            }
+            if (yPos + floatingText.clientHeight >= window.innerHeight || yPos <= 0) {
+                ySpeed *= -1;
+            }
+
+            floatingText.style.left = `${xPos}px`;
+            floatingText.style.top = `${yPos}px`;
+
+            requestAnimationFrame(moveText);
+        }
+
+        floatingText.style.position = "absolute";
+        moveText();
     </script>
 </body>
 </html>
-

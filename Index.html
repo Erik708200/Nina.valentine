@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Poppins', sans-serif;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .yes:hover {
+            background-color: #e03570;
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+        }
+        .no:hover {
+            background-color: #b3b3b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nina, will you be my Valentine? 💖</h1>
+    <div class="buttons">
+        <button class="yes" onclick="yesResponse()">Yes Erik of course!!</button>
+        <button class="no" onclick="noResponse()">No.</button>
+    </div>
+
+    <script>
+        function yesResponse() {
+            document.body.innerHTML = "<h1 style='color:#fff; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);'>Nina, sweetie :)! Thanks for accepting my invitation for you to be my VALENTINE<3!</h1>";
+        }
+        function noResponse() {
+            alert("Wrong answer, reload.");
+            location.reload();
+        }
+    </script>
+</body>
+</html>
+
